@@ -1,0 +1,23 @@
+{
+  "name": "visionx",
+  "version": "1.0.0",
+  "description": "Visualizador de objetos ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Juanfs99/2020-USFQ-visionX.git"
+  },
+  "author": "Juan Berrazueta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Juanfs99/2020-USFQ-visionX/issues"
+  },
+  "homepage": "https://github.com/Juanfs99/2020-USFQ-visionX#readme",
+  "dependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0"
+  }
+}
