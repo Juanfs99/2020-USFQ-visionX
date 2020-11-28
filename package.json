@@ -2,9 +2,15 @@
   "name": "visionx",
   "version": "1.0.0",
   "description": "Visualizador de objetos ",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run prod",
+    "build": "npm run clean && npm run transpile && gulp",
+    "server": "node ./dist-server/bin/www",
+    "dev": "npm run build && cross-env DEBUG=static-service:* NODE_ENV=development npm run server",
+    "prod": "npm run build && NODE_ENV=production npm run server",
+    "transpile": "babel ./server --out-dir dist-server",
+    "clean": "rimraf dist-server && rimraf public",
+    "watch": "nodemon"
   },
   "repository": {
     "type": "git",
@@ -15,9 +21,38 @@
   "bugs": {
     "url": "https://github.com/Juanfs99/2020-USFQ-visionX/issues"
   },
+  "nodemonConfig": {
+    "exec": "npm run dev",
+    "watch": [
+      "server/*",
+      "assets/*"
+    ],
+    "ext": "js, css, json, pug"
+  },
   "homepage": "https://github.com/Juanfs99/2020-USFQ-visionX#readme",
   "dependencies": {
-    "babel": "^6.23.0",
-    "babel-cli": "^6.26.0"
+    "@babel/cli": "^7.12.8",
+    "@babel/core": "^7.12.9",
+    "@babel/preset-env": "^7.12.7",
+    "autoprefixer": "^10.0.4",
+    "babel-plugin-module-resolver": "^4.0.0",
+    "cookie-parser": "~1.4.4",
+    "cross-env": "^7.0.2",
+    "cssnano": "^4.1.10",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "gulp": "^4.0.2",
+    "gulp-babel-minify": "^0.5.1",
+    "gulp-changed": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-postcss": "^9.0.0",
+    "gulp-replace": "^1.0.0",
+    "http-errors": "^1.6.3",
+    "morgan": "~1.9.1",
+    "nodemon": "^2.0.6",
+    "postcss": "^8.1.10",
+    "pug": "2.0.0-beta11",
+    "rimraf": "^3.0.2"
   }
 }

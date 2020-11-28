@@ -1,0 +1,20 @@
+
+body {
+  padding: 50px;
+  font-size: 14px;
+}
+
+a {
+  color: #01197C;
+}
+.btn-outline-primary:hover{
+  color: #fff;
+  background-color:  #01197C;
+  border-color:  #01197C; /*set the color you want here*/
+}
+h1{
+  color: #01197C;
+}
+td, th{
+  color: #01197C;
+}
