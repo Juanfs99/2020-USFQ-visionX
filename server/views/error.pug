@@ -1,6 +1,10 @@
 extends layout
 
+
 block content
-  h1= message
-  h2= error.status
-  pre #{error.stack}
+  .alert.alert-danger.alert-dismissable.fade.show
+    a.close(href='#' data-dismiss='alert' aria-label='close') &times;
+    strong #{error}: 
+    | El Código de Usuario:  
+    strong #{codigo}
+    |  #{mensaje}

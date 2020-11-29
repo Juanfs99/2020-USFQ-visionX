@@ -7,10 +7,8 @@
 var app = require('../app');
 var debug = require('debug')('visionx:server');
 var http = require('http');
-if (process.env.NODE_ENV == 'development') { //si esque estoy en development importa el modulo .env
-  debug('Enabling development .env');
-  require('dotenv').config()
-}
+
+
 /**
  * Get port from environment and store in Express.
  */

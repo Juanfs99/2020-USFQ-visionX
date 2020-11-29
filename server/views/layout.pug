@@ -1,7 +1,103 @@
 doctype html
 html
   head
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/css/styles.css')
+    
+
+    link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous")
+    script(src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous")
+    script(src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous")
+    script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous")
+    
+  
   body
-    block content
+    header
+      nav.navbar.navbar-expand-lg.navbar-light.fixed-top.bg-white
+        a.navbar-brand 
+          img(src="/images/logo.png", alt="logo", width="45", height="45")
+        button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation")
+          span.navbar-toggler-icon
+        div.navbar-collapse.collapse.w-100.order-1.order-md-0.dual-collapse2(id="navbarNav")
+          ul.navbar-nav.mr-auto
+            li.nav-item.active
+              a.nav-link(href="/") Inicio
+            li.nav-item
+              a.nav-link(href="/funcionamiento/") Funcionamiento
+            li.nav-item
+              a.nav-link(href="/calificanos/") Calificanos
+            li.nav-item
+              a.nav-link(href="/about/") Conócenos
+            li.nav-item
+              a.nav-link(href="/objects/new/add") Añadir Objeto
+            li.nav-item
+              a.nav-link(href="/changeObject") Cambiar Objeto
+            li.nav-item
+              a.nav-link(href="/deleteObject") Eliminar Objeto  
+            li.nav-item
+              a.nav-link(href="/visionTool") Vision
+            
+        .navbar-collapse.collapse.w-100.order-3.dual-collapse2
+          ul.navbar-nav.ml-auto
+            li.nav-item
+              a.nav-link(href="#") Pruébalo ahora!
+    
+    
+    
+          
+    
+    
+
+    
+      
+  
+        
+
+  div(class='container' style="min-height:70vh; display:flex; flex-direction:column ")
+    div(style="padding: 20px; padding-bottom: 50px;")
+      block content
+      br
+      br
+      br
+  
+  footer.page-footer.font-small(style="  height: 50px; margin-top: auto;")
+    
+    .container
+      
+      .row.text-center.d-flex.justify-content-center.pt-5.mb-3
+        
+        .col-md-2.mb-3
+          h6.text-uppercase.font-weight-bold
+            a.nav-link(href="/") Inicio
+        
+        .col-md-2.mb-3
+          h6.text-uppercase.font-weight-bold
+            a.nav-link(href="/funcionamiento/") Funcionamiento
+        
+        .col-md-2.mb-3
+          h6.text-uppercase.font-weight-bold
+            a.nav-link(href="/calificanos/") Calificanos
+        
+        .col-md-2.mb-3
+          h6.text-uppercase.font-weight-bold
+            a.nav-link(href="/about/") Conócenos
+        
+      hr.rgba-white-light(style='margin: 0 15%;')
+      .row.d-flex.text-center.justify-content-center.mb-md-0.mb-4
+        .col-md-8.col-12.mt-5
+          p(style='line-height: 1.7rem')
+            | 
+      hr.clearfix.d-md-none.rgba-white-light(style='margin: 10% 15% 5%;')
+      .row.pb-3
+        .col-md-12(style="text-align: center")
+          .mb-5.flex-center
+            a.fb-ic
+              i.fab.fa-facebook-f.fa-lg.white-text.mr-4  
+            a.tw-ic
+              i.fab.fa-twitter.fa-lg.white-text.mr-4      
+            a.ins-ic
+              i.fab.fa-instagram.fa-lg.white-text.mr-4  
+            
+        
+   

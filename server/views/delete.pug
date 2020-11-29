@@ -1,0 +1,31 @@
+extends layout
+
+block content
+    br
+    br
+
+    h1(style="text-align:center")=title
+    h2(style="text-align:center")=mensaje
+    
+    br
+    br
+    br
+    br
+    
+    .row
+        .col-md-5.form-group(style="float:left")
+          img(src="/images/trash.svg", alt="phone", width="100%")
+        .col-md-7.form-group
+            .col-md-3
+            .col-md-8
+                .card
+                    .card-body
+                        form.form-inline(action='/deleteObject' method='post' role='form' style="margin-left:20px;")
+                            p.text-center(style="margin-left:20px;") Ingrese el c&oacute;digo de Objeto a borrar
+                            input.form-control(type='text' value=`${label}` placeholder='Codigo de Objeto' aria-label='Buscar' name='objectid' )
+                            button.btn.btn-primary.text-center(type='submit' style="margin-left:20px;") Buscar
+                        form(action='' method='post' role='form' style="margin-top:20px;")
+                            .row
+                                
+                            .text-center
+                                button.btn.btn-primary.text-center(type='submit') Eliminar Objeto

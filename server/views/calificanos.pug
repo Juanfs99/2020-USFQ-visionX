@@ -1,0 +1,33 @@
+extends layout
+
+block content
+    article
+        br
+        h1(style="text-align:center ")=title
+    .info.text-center
+        div
+            .containter-fluid
+                br
+                .row
+                    br
+                    br
+                    .col-md-6.form-group 
+                        br
+                        br
+                        img(src="/images/review.svg", alt="phone", width="95%",)
+                    .col-md-6.form-group
+                        br
+                        .form-group
+                            input.form-control(type="text" placeholder="Nombre")
+                        br
+                        .form-group
+                            input.form-control(type="text" placeholder="Email")
+                        br
+                        .form-group
+                            input.form-control(type="text" placeholder="Escribe algo" style=" height:100px;")
+                        br
+                        button.btn.btn-secondary.btn-block(type="submit") Enviar
+                        
+
+       
+    br

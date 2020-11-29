@@ -1,0 +1,31 @@
+extends layout
+
+block content
+    br
+    br
+    br
+    h1(style="text-align:center")=title
+    h2(style="text-align:center")=mensaje
+    
+    br
+    br
+    br
+    .row
+        .col-md-2.form-group(style="float:left; ")
+          img(src="/images/add.svg", alt="phone", width="250%")
+        .col-md-2
+        .col-md-8
+            .card
+                .card-body
+                    form(action='' method='post' role='form')
+                        .row
+                            .col
+                                .form-group
+                                    label(for='label') Objeto
+                                    input#label.form-control(type='text' name='label' placeholder='Ingrese el nombre del objeto')
+                            .col
+                                .form-group
+                                    label(for='sound') URL Sonido
+                                    input#sound.form-control(type='text' name='sound' placeholder='Ingrese el url del sonido')
+                        .text-center
+                            button.btn.btn-primary.text-center(type='submit') Crear Objeto

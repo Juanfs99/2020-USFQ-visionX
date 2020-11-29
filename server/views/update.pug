@@ -1,0 +1,35 @@
+extends layout
+
+block content
+    br
+    br
+    
+    h1(style="text-align:center")=title
+    h2(style="text-align:center")=mensaje
+    
+    br
+    br
+    br
+    .row
+        .col-md-2.form-group(style="float:left; ")
+          img(src="/images/change.svg", alt="phone", width="250%")
+        .col-md-2
+        .col-md-8(style="padding-left:40px")
+            .card
+                .card-body
+                    form.form-inline.mt-2.mt-md-0(action='/changeObject' method='post' role='form' style="margin-left:40px;")
+                        p.text-center.mt-sm-2 Ingrese el c&oacute;digo de Objeto a modificar
+                        input.form-control.mr-sm-2.ml-sm-2(type='text' placeholder='Codigo de Objeto' aria-label='Buscar' name='objectid')
+                        button.btn.btn-primary.text-center(type='submit') Buscar
+                    form(action='' method='post' role='form')
+                        .row
+                            .col
+                                .form-group
+                                    label(for='label') Objeto
+                                    input#label.form-control(type='text' value=`${label}` name='label' placeholder='Ingrese el nombre del objeto')
+                            .col
+                                .form-group
+                                    label(for='sound') URL Sonido
+                                    input#sound.form-control(type='text' value=`${sound}` name='sound' placeholder='Ingrese el url del sonido')
+                        .text-center
+                            button.btn.btn-primary.text-center(type='submit') Modificar Objeto
