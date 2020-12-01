@@ -45,7 +45,7 @@ function cacheBustTask() { //es el task que pone los numeros despues de los pug 
 function optimazeImageTask() {
     return src([files.images_raster]) //agarrar las imagenes raster del asset
         .pipe(changed('public/images')) //te compara las imagenes con public para saber cuales estan nuevas o no, si alguna es diferente las minimiza
-        .pipe(imagemin()) //despues la minifica, optimizacion de las imagenes
+        //.pipe(imagemin()) //despues la minifica, optimizacion de las imagenes
         .pipe(dest('public/images')); //despues guarda en el archivo 
 }
 
