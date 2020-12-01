@@ -1,7 +1,7 @@
 const path = require("path");
 const vision = require("@google-cloud/vision");
 import environment from "#root/ayudantes/environment";
-const key = path.resolve(environment("GCLOUD_VISION"));
+const key = path.resolve(environment("GCLOUD_VISION")); //path.resolve es que agarra la carpeta y busca la direccion de eso. busca cual es la mejor solucion para llegar a eso.
 const pid = environment("GCLOUD_PID");
 const client = new vision.ImageAnnotatorClient({ //este es el que me ayuda a conectarme a la nube. Y el que me ayuda a procesar la imagen queu voy a mandar. Es decir me devuelve la informacion.
     projectId: pid,

@@ -264,7 +264,7 @@ const usersController = (req, res) => {
 
 /*GET VISION HERRAMIENTA*/
 const visionTool = (req, res) => {
-    res.render('vision', { title: '¿Qué dice la gente de nosotros?' })
+    res.render('vision', { title: 'VisionX' })
 };
 
 

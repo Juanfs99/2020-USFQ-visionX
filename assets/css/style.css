@@ -18,3 +18,11 @@ h1{
 td, th{
   color: #01197C;
 }
+canvas{
+  margin-top: 20px;
+  width:1280px; 
+  height:720px;
+  border:10px solid #01197C;
+  text-align: center;
+
+}

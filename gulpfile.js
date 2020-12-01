@@ -14,6 +14,7 @@ const imagemin = require('gulp-imagemin') //despues de change si sabe si cambio 
 const files = {
     cssPath: ['assets/css/all.min.css', 'assets/css/style.css'], //esta un array para decir el orden del css 
     jsPath: 'assets/js/**/*.js', //Es para reconocer todos los archivos js, no importa como pero busca todos
+    fonts: 'assets/webfonts/**/*', //ES para reconocer la carpeta de los webfonts
     views: 'server/views/**/*.pug', //Es para reconocer todos los archivos pug, no importa como pero busca todos
     images_raster: 'assets/images/**/*.+(png|jpg|gif)', //Es para reconocer todos los archivos png jpg gif, no importa como pero busca todos
     images_special: 'assets/images/**/*.+(svg)' //Es para reconocer todos los archivos svg, no importa como pero busca todos
@@ -52,10 +53,15 @@ function copyImageTask() {
     return src([files.images_special]) //busca las imagenes svg de la carpeta assets
         .pipe(dest('public/images')); //despues las copia porque no se pueden cambiar
 }
+function copyFonts() {
+    return src([files.fonts]) //busca las imagenes svg de la carpeta assets
+        .pipe(dest('public/webfonts')); //despues las copia porque no se pueden cambiar
+}
 
 exports.default = series( //el series explica como exportar en orden que mandemos los tasks
     parallel(cssTask, jsTask),  //es para mandar a la vez los dos porque no tienen dependencias uno a otro. 
     cacheBustTask,
     optimazeImageTask,
-    copyImageTask
+    copyImageTask,
+    copyFonts
 );
