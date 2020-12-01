@@ -39,3 +39,6 @@ canvas{
   cursor: pointer;
 }
 
+label span.error{
+  color:red;
+}

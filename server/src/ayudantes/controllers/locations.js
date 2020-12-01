@@ -103,7 +103,9 @@ const addObjeto = (req, res) => {
 const doAddObjeto = (req, res) => {
 
     const path = '/api/addobject';
-
+    console.log(req);
+    res.status(200);
+    return;
     axios.post(`${apiOptions.server}${path}`, {
         label: req.body.label,
         sound: req.body.sound,

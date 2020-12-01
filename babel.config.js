@@ -4,7 +4,8 @@ module.exports = { //ESTE ARCHIVO FUNCIONA PARA QUE EL BABEL ESTE CORRECTAMENTE 
             "module-resolver",
             {
                 alias: {
-                    "#root": "./server/src"
+                    "#root": "./server/src",
+                    "#api": "./server/app_api"
                 }
             }
         ]
