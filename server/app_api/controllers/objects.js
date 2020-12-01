@@ -24,6 +24,8 @@ const objectCreateMultiple = (req, res) => {
 
 const objectCreate = (req, res) => {
     //Grabar el archivo en una carpeta del servidor
+    console.log(req.body.label);
+    console.log(req.body.sound);
 
     objetos.create({
         label: req.body.label,

@@ -1,8 +1,11 @@
 /* CONTROLADORES PARA LA COLECCION LOCATIONS */
 //const request = require('request');
 const axios = require('axios');
+const fs = require('fs');
+import environment from '#root/ayudantes/environment';
+const path = require('path');
 const apiOptions = {
-    server: 'http://localhost:3000'
+    server: 'http://localhost:' + environment('PORT')
 };
 if (process.env.NODE_ENV === 'production') {
     apiOptions.server = 'https://visionx2.herokuapp.com';
@@ -101,14 +104,20 @@ const addObjeto = (req, res) => {
     })
 };
 const doAddObjeto = (req, res) => {
+    if (!req.files || Object.keys(req.files).length === 0) {
+        return res.status(400).send('No files were uploaded.');
+    }
+    const file = req.files.sound;
+    var dir = path.resolve('tmp');
+    if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir);
+    }
+    file.mv(path.resolve(dir, file.name));
+    const apiPath = '/api/addobject';
 
-    const path = '/api/addobject';
-    console.log(req);
-    res.status(200);
-    return;
-    axios.post(`${apiOptions.server}${path}`, {
+    axios.post(`${apiOptions.server}${apiPath}`, {
         label: req.body.label,
-        sound: req.body.sound,
+        sound: path.resolve(dir, file.name),
     })
         .then(function (response) {
             console.log(response);
