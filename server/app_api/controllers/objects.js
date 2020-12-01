@@ -137,9 +137,9 @@ const objectUpdate = (req, res) => {
 };
 
 const objectDelete = (req, res) => {
-    if (req.params.objectid) {
+    if (req.body.objectid) {
         objetos
-            .findByIdAndDelete(req.params.objectid)
+            .findByIdAndDelete(req.body.objectid)
             .exec((err, objetoUsuario) => {
                 if (err) {
                     return res
