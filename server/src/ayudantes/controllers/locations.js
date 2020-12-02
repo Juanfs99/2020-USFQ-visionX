@@ -104,11 +104,11 @@ const addObjeto = (req, res) => {
     })
 };
 const doAddObjeto = (req, res) => {
-    if (!req.files || Object.keys(req.files).length === 0) {
+    if (!req.files || Object.keys(req.files).length === 0) { //ESTO ES PARA SUBIR ARCHIVOS
         return res.status(400).send('No files were uploaded.');
     }
     const file = req.files.sound;
-    var dir = path.resolve('tmp');
+    var dir = path.resolve('tmp'); //ESTO ES PARA HACER LA CARPETA PARA LOS AUDIOS
     if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir);
     }

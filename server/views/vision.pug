@@ -5,4 +5,14 @@ block content
     article
         h1(style="text-align:center; margin-top:20px ")=title
         .info.text-center
-           canvas(id="myCanvas" width="1280" height="720" style="border:1px solid #000000;")               
+            .col-md-12
+                .camera
+                    video(id="video") Video stream no esta disponible
+                    button.botonCamara.rounded-circle.border.border-primary(id="cheese" style="background-color:white; color: black" )
+                         button.botonCamaraInt.rounded-circle.border.border-primary(id="cheese" style="background-color:white; color: black")
+    .output(id="output")
+        canvas.video_canvas(id="canvas" style="border:1px solid #000000;")
+        button.botonModal.rounded-circle.border.border-primary(id="closeModal") X
+    script(src="/js/camara.js")
+                    
+        

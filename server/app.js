@@ -5,29 +5,31 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var fileUpload = require('express-fileupload');
 
+
 require('#api/models/db')
 
 var indexRouter = require('./routes/index');
-var visionRouter = require('./routes/vision');
 var apiRouter = require('./app_api/routes/index');
 var app = express();
 app.use(fileUpload({
   createParentPath: true
-}))
+})) //ESTO ES PARA PODER SUBIR EL ARCHIVO 
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ extended: false, limit: '50mb' }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../public')));
 
+
+
+
 app.use('/', indexRouter);
 app.use('/api', apiRouter);
-//app.use('/vision', visionRouter);
 
 
 // catch 404 and forward to error handler

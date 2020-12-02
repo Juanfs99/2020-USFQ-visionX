@@ -20,8 +20,7 @@ td, th{
 }
 canvas{
   margin-top: 20px;
-  width:1280px; 
-  height:720px;
+  
   border:10px solid #01197C;
   text-align: center;
 
@@ -41,4 +40,48 @@ canvas{
 
 label span.error{
   color:red;
+}
+
+.camera{
+  margin-top: 40px;
+  position: relative;
+}
+.botonCamara{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  left: calc(50%-25px);
+  bottom: 40px;
+}
+.botonCamaraInt{
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  left: calc(50%-20px);
+  bottom: 45px;
+  pointer-events: none;  
+
+}
+.output {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.308);
+  text-align: center;
+  z-index: 9999;
+}
+.video_canvas {
+  margin-top: 175px;
+}
+.botonModal {
+  margin-top: 165px;
+  position: absolute;
+  width:30px;
+  height: 30px;
+  right: calc(50% - 360px);
+  top: 20px;
+
 }

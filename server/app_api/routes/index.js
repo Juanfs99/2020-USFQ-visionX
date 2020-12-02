@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 //incluir mis controladores
 const ctrlObjects = require('#api/controllers/objects');
-
+const ctrlVision = require('#api/controllers/vision');
 //definir las rutas para las acciones sobre la coleccion users
 
 router
@@ -19,5 +19,9 @@ router
     .route('/addobject')
     .post(ctrlObjects.objectCreate)
     .get(ctrlObjects.objectList);
+router
+    .route('/vision')
+    .post(ctrlVision.labelGet)
+
 
 module.exports = router;
