@@ -3,7 +3,6 @@ var router = express.Router();
 var path = require("path");
 var fs = require('fs');
 import detectarInfo from '#api/ayudantes/googleVisionHelper'; //aqui importo la funcion detectarInfo desde el archivo ayudantes/vision
-import { fstat } from 'fs';
 
 
 const labelGet = async (req, res) => { //Controlador de la ruta vision, que es para hacer las cosas
