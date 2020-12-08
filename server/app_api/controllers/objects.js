@@ -74,7 +74,7 @@ const objectRead = (req, res) => {
     objetos
         .findById(req.params.objectid) //obtiene el userId de los parametros de la URL
         .exec((err, objetoUsuario) => {
-            if (!objetoUsuario) {  //no existe el documento con userid
+            if (!objetoUsuario) {  //no existe el documento con objectid
                 console.log(`Objeto con objectid: ${req.params.objectid} no encontrado`);
                 return res
                     .status(404)
@@ -137,9 +137,9 @@ const objectUpdate = (req, res) => {
 };
 
 const objectDelete = (req, res) => {
-    if (req.body.objectid) {
+    if (req.params.objectid) {
         objetos
-            .findByIdAndDelete(req.body.objectid)
+            .findByIdAndDelete(req.params.objectid)
             .exec((err, objetoUsuario) => {
                 if (err) {
                     return res

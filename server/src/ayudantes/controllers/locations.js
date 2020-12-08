@@ -108,7 +108,7 @@ const doAddObjeto = (req, res) => {
         return res.status(400).send('No files were uploaded.');
     }
     const file = req.files.sound;
-    var dir = path.resolve('tmp'); //ESTO ES PARA HACER LA CARPETA PARA LOS AUDIOS
+    var dir = path.resolve('uploads'); //ESTO ES PARA HACER LA CARPETA PARA LOS AUDIOS
     if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir);
     }
@@ -231,21 +231,24 @@ const deleteObject = (req, res) => {
         });
 
 }
-const doDeleteObject = (req, res) => {
+const doDeleteObject = async (req, res) => {
+    const path_buscar = `/api/objects/${req.params.objectid}`;
+
+    await axios.get(`${apiOptions.server}${path_buscar}`) //esto es para buscar dentro del delete para poder borrar el archivo antes de borrar el record en la base
+        .then(function (response) {
+            if (fs.existsSync(response.data.sound)) {
+                fs.unlinkSync(response.data.sound);
+            }
+        })
+        .catch(function (error) {
+            // handle error
+            console.log(error);
+        });
+
     const path = `/api/objects`;
 
-    /*const requestOptions = {
-        url: `${apiOptions.server}${path}/${req.params.objectid}`,
-        method: 'PUT',
-        json: putdata
- 
-    };*/
-    axios.delete(`${apiOptions.server}${path}/${req.params.objectid}`, {
-        label: req.body.label,
-        sound: req.body.sound,
-    })
+    axios.delete(`${apiOptions.server}${path}/${req.params.objectid}`)
         .then(function (response) {
-            console.log(response);
             res.render('delete', {
                 title: "Objeto Borrado",
                 mensaje: "Ingresar otro id para borrar otro objeto",
