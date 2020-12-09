@@ -47,8 +47,6 @@ router.post('/deleteObject/:objectid', ctrlLocations.doDeleteObject);
 
 router.get('/visionTool', ctrlLocations.visionTool);
 
-/* AUDIOS */
-router.get('/sound/:objectid', ctrlLocations.soundGet)
 
 
 module.exports = router;

@@ -32,7 +32,7 @@ const labelGet = async (req, res) => { //Controlador de la ruta vision, que es p
                 //EL IF ES LA CONDICION DEL FIND PARA SABER COMO BUSCA ALGO
                 if (description.indexOf(obj.label.toLowerCase()) > -1) { //El valor de el label.description de google Vision contenga la palabra del obj.label de mi base de datos
                     console.log("ENCONTRADO");
-                    return true; //le asigna a visionCandidato el label correspondiente 
+                    return true; //le asigna a visionCandidato el label correspondiente HACE QUE VISIONCANDIDATO SEA IGUAL A VISIONLABEL
                 }
             })
             if (visionCandidato != null) { //Si esque visionCandidato ya no es null

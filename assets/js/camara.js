@@ -14,12 +14,6 @@ $(document).ready(function () {
     output = document.getElementById('output');
     closeModal = document.getElementById('closeModal');
 
-    var audioElement = document.createElement('audio'); //creamos un elemento de audio 
-    audioElement.addEventListener("canplay", function () { //cada vez que se cambia el source espera que se cambia el audio y lo hace play
-        console.log('ENTRA');
-        audioElement.play();
-    });
-
 
     var limpiarCanvas = function () { //esta funcion es para que se limpie el canvas para que no se sobrepongan las fotos
         var context = canvas.getContext('2d'); //cuando se usa canvas siempre se debe saber el contexto, se sabe el contexto si es en 2d .getContext
@@ -53,8 +47,6 @@ $(document).ready(function () {
         })
             .done(function (res) { //Cuando recibimos la informacion res es el objeto del ajax
                 console.log(res);
-                audioElement.setAttribute('src', res.url); // El audio element se lo setea con el atributo URL que api/vision nos manda depende lo que suceda, si encuentra o no un label en la base de datos
-                //al llamar src es para llamar automaticamente al sound/objectId.
             });
     }
 

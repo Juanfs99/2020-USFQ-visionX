@@ -17,8 +17,8 @@ const files = {
     fonts: 'assets/webfonts/**/*', //ES para reconocer la carpeta de los webfonts
     views: 'server/views/**/*.pug', //Es para reconocer todos los archivos pug, no importa como pero busca todos
     images_raster: 'assets/images/**/*.+(png|jpg|gif)', //Es para reconocer todos los archivos png jpg gif, no importa como pero busca todos
-    images_special: 'assets/images/**/*.+(svg)', //Es para reconocer todos los archivos svg, no importa como pero busca todos
-    audios: 'assets/audios/**/*'
+    images_special: 'assets/images/**/*.+(svg)' //Es para reconocer todos los archivos svg, no importa como pero busca todos
+
 }
 
 function cssTask() {
@@ -58,16 +58,11 @@ function copyFonts() {
     return src([files.fonts]) //busca las imagenes svg de la carpeta assets
         .pipe(dest('public/webfonts')); //despues las copia porque no se pueden cambiar
 }
-function copyAudios() {
-    return src([files.audios]) //busco los audios en la carpeta assets
-        .pipe(dest('public/audios')); //despues las copia porque no se pueden cambiar
-}
 
 exports.default = series( //el series explica como exportar en orden que mandemos los tasks
     parallel(cssTask, jsTask),  //es para mandar a la vez los dos porque no tienen dependencias uno a otro. 
     cacheBustTask,
     optimazeImageTask,
     copyImageTask,
-    copyFonts,
-    copyAudios
+    copyFonts
 );
