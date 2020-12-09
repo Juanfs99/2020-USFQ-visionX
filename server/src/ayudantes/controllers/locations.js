@@ -12,13 +12,7 @@ if (process.env.NODE_ENV === 'production') {
 };
 /* GET HomePage */
 const homeList = (req, res) => {
-    /*const path =  `/api/objects/${req.params.userid}`;
-    const requestOptions = { //Objeto cargado con las opciones
-        url :  `${apiOptions.server}${path}`,
-        method: 'GET',
-        json : {},
-        qs:{}
-    };*/
+
     axios.get(`/api/objects/${req.params.objectid}`)
         .then(function (response) {
             // handle success
@@ -30,28 +24,7 @@ const homeList = (req, res) => {
             console.log(error);
         });
 
-    /*request( //Modulo request que usa la API REST
-        requestOptions, //Opciones
-        (err, response, body) =>{ //callback con sus 3 partes: err, response, body
-            //error - objeto con el error
-            //response - respuesta completa (incluye el status)
-            //body  - cuerpo de la respuesta
-            if(err){
-                console.log(err);
-            }else if(response.statusCode === 200 && body){ //ademas del statusCode, el objeto resultantte debe tener contenido
-                console.log(body);
-                renderHomePage(req, res, body);
-            }else{
-                console.log(response.statusCode);
-                res.render('error', { //usar la vista error.pug
-                    error: 'Error',
-                    codigo: req.params.objectid,  //coudigo de usuario con error
-                    mensaje: 'No existe. Ingrese uno valido'
-                });
-            }
-            
-        }       
-    );*/
+
 };
 const renderHomePage = (req, res, objetoResultante) => {
     res.render('index', {
@@ -281,6 +254,41 @@ const visionTool = (req, res) => {
     res.render('vision', { title: 'VisionX' })
 };
 
+/* OBTENER AUDIOS y entregarlos para que se reproduzcan*/
+const soundGet = (req, res) => {
+    if (req.params.objectid) {
+        const path = `/api/objects/${req.params.objectid}`;
+
+        axios.get(`${apiOptions.server}${path}`)
+            .then(function (response) {
+                // handle success
+                //changeObject(req, res, response);
+                console.log(response.data.sound);
+                const fileURI = response.data.sound; //ubicar el archivo
+                const data = fs.readFileSync(fileURI, 'binary'); //Lo lee en binario porque es un audio. Lee los bytes y se le asigna a data
+                if (!data) { //si esque no hay archivos te da el error
+                    res
+                        .status(404)
+                        .json({ "mensaje": "No se encontró el sonido" });
+                    return;
+                }
+                //headers son para setear el metadata para que el navegador sepa que esta recibiendo un archivo
+                res.setHeader('Content-Length', data.length); //Esto es para saber el tama;o del archivo
+                res.setHeader('Content-Type', 'audio/mpeg'); //Esto es para que el navegador sepa que estoy mandando un mp3
+                res.write(data, 'binary'); //para escribir en la respuesta ya los bytes del objeto.
+                res.end();
+
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+                res
+                    .status(404)
+                    .json(error);
+            });
+
+    }
+};
 
 
 module.exports = {
@@ -301,4 +309,5 @@ module.exports = {
     deleteObject,
     doDeleteObject,
     visionTool,
+    soundGet
 };

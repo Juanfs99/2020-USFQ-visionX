@@ -1,7 +1,7 @@
 //Incorporar modelo compilado en Mongoose 
 const mongoose = require('mongoose');
 const objetos = mongoose.model('objeto');
-
+const fs = require('fs');
 //Controladores
 //Crear multiples documentos al mismo tiempo
 const objectCreateMultiple = (req, res) => {
@@ -71,6 +71,7 @@ const objectList = (req, res) => {
 };
 // Buscar un documento con userid
 const objectRead = (req, res) => {
+    console.log('req.params.objectid');
     objetos
         .findById(req.params.objectid) //obtiene el userId de los parametros de la URL
         .exec((err, objetoUsuario) => {
@@ -162,6 +163,7 @@ const objectDelete = (req, res) => {
             .json({ "mensaje": "No se encontró el usuario" });
     }
 };
+
 
 module.exports = {
     objectCreateMultiple,
