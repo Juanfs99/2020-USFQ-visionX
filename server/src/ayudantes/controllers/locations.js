@@ -81,7 +81,7 @@ const doAddObjeto = (req, res) => {
         return res.status(400).send('No files were uploaded.');
     }
     const file = req.files.sound;
-    var dir = path.resolve('uploads'); //ESTO ES PARA HACER LA CARPETA PARA LOS AUDIOS
+    var dir = path.resolve("audios", "uploads"); //ESTO ES PARA HACER LA CARPETA PARA LOS AUDIOS
     if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir);
     }

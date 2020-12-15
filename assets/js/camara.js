@@ -14,6 +14,10 @@ $(document).ready(function () {
     output = document.getElementById('output');
     closeModal = document.getElementById('closeModal');
 
+    var audioElement = document.createElement('audio'); //creamos un elemento de audio 
+    audioElement.addEventListener("canplay", function () { //cada vez que se cambia el source espera que se cambia el audio y lo hace play
+        audioElement.play();
+    });
 
     var limpiarCanvas = function () { //esta funcion es para que se limpie el canvas para que no se sobrepongan las fotos
         var context = canvas.getContext('2d'); //cuando se usa canvas siempre se debe saber el contexto, se sabe el contexto si es en 2d .getContext
@@ -27,8 +31,10 @@ $(document).ready(function () {
         if (width && height) { //si esque width y height estan seteados y existen. si esque height es 0 no pasa lo de adentro, eso depende si esque esta la camara o no 
             canvas.width = width;
             canvas.height = height;
-            output.style.width = '100%'; //esto es para poner el modal al 100%
-            output.style.height = '100%';
+            $(".output").animate({ width: "100%", height: "100%" }, 500);
+
+            //output.style.width = '100%'; //esto es para poner el modal al 100%
+            //output.style.height = '100%';
             context.drawImage(video, 0, 0, width, height); //luego dibujamos los pixeles del momento que se tome en ese momento ene le video
             var data = canvas.toDataURL('image/png');
             llamarServicio(data);
@@ -47,6 +53,11 @@ $(document).ready(function () {
         })
             .done(function (res) { //Cuando recibimos la informacion res es el objeto del ajax
                 console.log(res);
+                audioElement.setAttribute('src', res.url); // El audio element se lo setea con el atributo URL que api/vision nos manda depende lo que suceda, si encuentra o no un label en la base de datos
+                //al llamar src es para llamar automaticamente al /uploads/sound.mp3
+                $('.label').html("Label: " + res.label);
+                $('.label').fadeIn(2);
+
             });
     }
 
@@ -80,8 +91,11 @@ $(document).ready(function () {
 
     closeModal.addEventListener('click', function (event) { //es para cerrar el modal
         event.preventDefault();
-        output.style.width = '1px'; //se le pone 1px al principio para simular que se cerro
-        output.style.height = '1px';
+        $(".output").animate({ width: 1, height: 1 }, 500);
+        //output.style.width = '1px'; //se le pone 1px al principio para simular que se cerro
+        //output.style.height = '1px';
+        $('.label').html("Label: ");
+
     }, false)
 
     limpiarCanvas();

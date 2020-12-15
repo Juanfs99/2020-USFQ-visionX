@@ -36,9 +36,12 @@ const labelGet = async (req, res) => { //Controlador de la ruta vision, que es p
                 }
             })
             if (visionCandidato != null) { //Si esque visionCandidato ya no es null
+                console.log(path.parse(obj.sound));
+                const filename = path.parse(obj.sound).base; //Coge un path a un archivo y da todas las partes de un archivo (parse)
+
                 candidato = {//aqui es para asignar solo el label al obj para que me imprima solo label para que se imprima el label y no toda la info
                     label: obj.label,
-                    url: '/sound/' + obj._id
+                    url: '/uploads/' + filename
                 }
             }
         }

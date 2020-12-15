@@ -64,5 +64,5 @@ typings/
 gcloud
 dist-server
 public
-uploads
 tmp
+audios/uploads/*.mp3

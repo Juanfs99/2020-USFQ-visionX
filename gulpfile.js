@@ -17,6 +17,7 @@ const files = {
     fonts: 'assets/webfonts/**/*', //ES para reconocer la carpeta de los webfonts
     views: 'server/views/**/*.pug', //Es para reconocer todos los archivos pug, no importa como pero busca todos
     images_raster: 'assets/images/**/*.+(png|jpg|gif)', //Es para reconocer todos los archivos png jpg gif, no importa como pero busca todos
+    favicon: 'assets/favicon.ico',
     images_special: 'assets/images/**/*.+(svg)' //Es para reconocer todos los archivos svg, no importa como pero busca todos
 
 }
@@ -50,9 +51,14 @@ function optimazeImageTask() {
         .pipe(dest('public/images')); //despues guarda en el archivo 
 }
 
+
 function copyImageTask() {
     return src([files.images_special]) //busca las imagenes svg de la carpeta assets
         .pipe(dest('public/images')); //despues las copia porque no se pueden cambiar
+}
+function copyFavicon() {
+    return src([files.favicon]) //busca las imagenes svg de la carpeta assets
+        .pipe(dest('public')); //despues las copia porque no se pueden cambiar
 }
 function copyFonts() {
     return src([files.fonts]) //busca las imagenes svg de la carpeta assets
@@ -64,5 +70,6 @@ exports.default = series( //el series explica como exportar en orden que mandemo
     cacheBustTask,
     optimazeImageTask,
     copyImageTask,
-    copyFonts
+    copyFonts,
+    copyFavicon
 );
