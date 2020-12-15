@@ -107,7 +107,7 @@ const objectUpdate = (req, res) => {
             if (!objetoUsuario) {
                 return res
                     .status(404)
-                    .json({ "Mensaje": "userid no existe" });
+                    .json({ "Mensaje": "userid no existes" });
             } else if (err) {
                 return res
                     .status(400)
@@ -164,6 +164,33 @@ const objectDelete = (req, res) => {
     }
 };
 
+const objectName = (req, res) => {
+    console.log('req.params.label');
+    const buscar = new RegExp(req.params.label);
+    objetos
+        .find({
+            'label': buscar
+        }) //obtiene el userId de los parametros de la URL
+        .exec((err, matchLabel) => {
+            if (!matchLabel) {  //no existe el documento con objectid
+                console.log(`Objeto con label: ${req.params.label} no encontrado`);
+                return res
+                    .status(404)
+                    .json({
+                        "mensaje": "Objeto no encontrado"
+                    });
+            } else if (err) { //findbyid encontro un error
+                console.log(`Se encontro un error para el label: ${req.params.label}`);
+                return res
+                    .status(404)
+                    .json(err);
+            }
+            res // responder enviando el documento encontrado y el status HTTP 200
+                .status(200)
+                .json(matchLabel);
+        })
+
+};
 
 module.exports = {
     objectCreateMultiple,
@@ -171,5 +198,6 @@ module.exports = {
     objectList,
     objectRead,
     objectUpdate,
-    objectDelete
+    objectDelete,
+    objectName
 };

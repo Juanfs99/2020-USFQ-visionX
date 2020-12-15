@@ -20,8 +20,12 @@ router
     .post(ctrlObjects.objectCreate)
     .get(ctrlObjects.objectList);
 router
+    .route('/search/:label')
+    .get(ctrlObjects.objectName)
+router
     .route('/vision')
     .post(ctrlVision.labelGet)
+
 
 
 module.exports = router;

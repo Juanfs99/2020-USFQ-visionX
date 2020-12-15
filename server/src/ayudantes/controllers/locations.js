@@ -115,7 +115,8 @@ const changeObject = (req, res) => {
     res.render('update', {
         title: "Actualizar objeto",
         label: "",
-        sound: ""
+        sound: "",
+        document: ""
     })
 };
 const objectRead = (req, res) => {
@@ -123,7 +124,7 @@ const objectRead = (req, res) => {
 };
 
 const updateObject = (req, res) => {
-    const path = `/api/objects/${req.params.objectid}`;
+    const path = `/api/search/${req.params.objectid}`;
 
     axios.get(`${apiOptions.server}${path}`)
         .then(function (response) {
@@ -132,8 +133,9 @@ const updateObject = (req, res) => {
             console.log(response.data.label);
             res.render('update', {
                 title: "Actualizar Objeto",
-                label: response.data.label,
-                sound: response.data.sound
+                label: response.data[0].label,
+                sound: response.data[0].sound,
+                document: response.data[0]._id
             })
 
         })
@@ -150,7 +152,7 @@ const doUpdateObject = (req, res) => {
         sound: req.body.sound
     };
 
-    axios.put(`${apiOptions.server}${path}/${req.params.objectid}`, {
+    axios.put(`${apiOptions.server}${path}/${req.body.document}`, {
         label: req.body.label,
         sound: req.body.sound,
     })
@@ -160,7 +162,8 @@ const doUpdateObject = (req, res) => {
                 title: "Objeto actualizado",
                 mensaje: "Ingresar otro objeto para actualizar",
                 label: "",
-                sound: ""
+                sound: "",
+                document: ""
             })
         })
         .catch(function (error) {
