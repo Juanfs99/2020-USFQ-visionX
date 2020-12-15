@@ -8,7 +8,7 @@ const apiOptions = {
     server: 'http://localhost:' + environment('PORT')
 };
 if (process.env.NODE_ENV === 'production') {
-    apiOptions.server = 'https://visionx2.herokuapp.com';
+    apiOptions.server = 'https://visionxusfq.herokuapp.com';
 };
 /* GET HomePage */
 const homeList = (req, res) => {
