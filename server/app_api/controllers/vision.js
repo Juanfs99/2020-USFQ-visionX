@@ -49,7 +49,7 @@ const labelGet = async (req, res) => { //Controlador de la ruta vision, que es p
     });
 
     if (candidato == null) {
-        candidato = { label: 'No encontrado', url: '/audios/ninguno.mp3' }; //aqui decimos que si el candidato no tiene informacion no se refiere a nada en la base le direccionamos el audio ninguno que esta en public
+        candidato = { label: 'No encontrado', url: 'ninguno.mp3' }; //aqui decimos que si el candidato no tiene informacion no se refiere a nada en la base le direccionamos el audio ninguno que esta en public
     }
 
     res.json(candidato); //despues devolvemos a la informacion del Ajax 
