@@ -10,7 +10,7 @@ export class FuncionDataService {
   constructor(private http: HttpClient) { }
 
   //metodo publico para el componente
-  private apiBaseUrl = 'http://localhost:3000/api/objects';
+  private apiBaseUrl = '/api/objects';
   public getObjects(): Promise<Objetos> {
 
     //const codigo: string = '5fd8162e57e6b1747c762a2d';
