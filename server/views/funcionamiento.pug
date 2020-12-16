@@ -1,78 +1,10 @@
 extends layout
 block content
-    
-    article
-        h1(style="text-align:center") ¿Cómo Funciona VisionX?
-        br
-        br
+    app-funcionamiento
+        block scripts
+            script(src='/build/runtime.e227d1a0e31cbccbf8ec.js')
+            script(src='/build/main.c4d5921d05c9352344f3.js')
+            script(src='/build/polyfills.a4021de53358bb0fec14.js')
 
-    .info.text-center
-        img(src="/images/mision.svg", alt="phone", width="35%",)
-        br
-        br
-        h4 1. Colócate frente a la cámara de tu dispositivo y muéstranos un objeto
-        br
-        br
-        img(src="/images/vision.svg", alt="phone", width="35%",)
-        br
-        br
-        h4 2. Si el objeto que nos muestras está registrado, el sistema lo reconocerá
-        br
-        br
-        img(src="/images/add.svg", alt="phone", width="35%",)
-        br
-        br
-        h4 3. Sube el volumen y escucha el nombre del objeto para saber que es.
-        br
-        br
-        img(src="/images/change.svg", alt="phone", width="35%",)
-        br
-        br
-        h4 4. Repite el proceso cada vez que quieras reconocer un objeto
-        br
-        br
-        h1(style="text-align:center ")=Objetos
-        
-    .info.text-center
-        div
-            .containter-fluid
-                br
-                .row
-                    br
-                    br
-                    .col-md-6.form-group 
-                        br
-                        br
-                        img(src="/images/funcionamiento.svg", alt="phone", width="95%",)
-                    .col-md-6.form-group
-                        br
-                        br
-                        table.table.table-borderless
-                            thead
-                                tr
-                                    th(scope="col")=Oficina
-                                    th(scope="col")=Casa
-                                    th(scope="col")=Escuela
-                                    th(scope="col")=Calle
-                            tbody   
-                                tr
-                                    td=Escritorio
-                                    td=Cama
-                                    td=Escritorio
-                                    td=Carro
-                                tr
-                                    td=Lampara
-                                    td=Lavadora
-                                    td=Lapiz
-                                    td=Semaforo
-                                tr
-                                    td=Computadora
-                                    td=Microondas
-                                    td=Papel
-                                    td=Basurero
-                                tr
-                                    td=Impresora
-                                    td=Silla
-                                    td=Cartuchera
-                                    td=Motocicleta
+
     
