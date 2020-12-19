@@ -35,8 +35,8 @@ const renderHomePage = (req, res, objetoResultante) => {
 
 const homePage = (req, res) => {
     res.render('index', {
-        V1: 'Titulo',
-        V2: 'descubrir el mundo',
+        V1: 'VisionX',
+        V2: 'Descubrir el mundo',
         V3: 'Somos una compañia independiente que queremos ayudar a las personas con poca o sin visión a que puedan saber que hay en el mundo como nosotros sabemos.',
         Caract: 'Fácil, útil y beneficioso',
         Descrip: 'VisionX es una herramienta web que activa la cámara de tu dispositivo para reconocer lo que tienes alfrente y tu celular te lo dirá.',

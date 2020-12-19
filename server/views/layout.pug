@@ -30,19 +30,20 @@ html
               a.nav-link(href="/calificanos/") Calificanos
             li.nav-item
               a.nav-link(href="/about/") Conócenos
-            li.nav-item
-              a.nav-link(href="/objects/new/add") Añadir Objeto
-            li.nav-item
-              a.nav-link(href="/changeObject") Cambiar Objeto
-            li.nav-item
-              a.nav-link(href="/deleteObject") Eliminar Objeto  
-            li.nav-item
-              a.nav-link(href="/visionTool") Vision
-            
+            li.nav-item  
+              a.nav-link(href="/visionTool") Pruébalo aquí      
+            li.nav-item.dropdown
+              a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                | CRUD
+              .dropdown-menu(aria-labelledby='navbarDropdown')
+                a.dropdown-item.nav-link(href="/objects/new/add") Añadir Objeto
+                a.dropdown-item.nav-link(href="/changeObject") Cambiar Objeto
+                a.dropdown-item.nav-link(href="/deleteObject") Eliminar Objeto     
         .navbar-collapse.collapse.w-100.order-3.dual-collapse2
           ul.navbar-nav.ml-auto
             li.nav-item
               a.nav-link(href="/visionTool") Pruébalo ahora!
+            
     
     
     
